@@ -621,6 +621,15 @@
           sessionId: sessionId
         };
 
+        // GTM: Track chat interaction (Lead Generation event)
+        if (window.dataLayer && retryCount === 0) {
+          window.dataLayer.push({
+            event: 'chat_interaction',
+            chat_type: isQR ? 'quick_response' : 'manual_text',
+            chat_message: message
+          });
+        }
+
         fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
