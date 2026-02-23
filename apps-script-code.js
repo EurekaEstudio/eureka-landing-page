@@ -17,28 +17,28 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.tryLock(10000);
 
-  // CORS HEADERS (Crucial para requests con application/json desde frontend separado)
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
-
   try {
     Logger.log('--- NUEVO LEAD RECIBIDO ---');
 
-    // Si no hay datos (ej. un preflight request fallido que llegó como POST vacío)
-    if (!e || !e.postData || !e.postData.contents) {
-      throw new Error("No data received");
+    // Leer datos: primero intentar e.parameter (URLSearchParams / form-encoded)
+    // Si no hay, intentar JSON en e.postData.contents
+    var data;
+    if (e.parameter && e.parameter.nombre) {
+      // Viene de URLSearchParams (application/x-www-form-urlencoded) ✅
+      data = e.parameter;
+      Logger.log('Formato: URLSearchParams');
+    } else if (e.postData && e.postData.contents) {
+      // Viene como JSON (application/json o text/plain)
+      data = JSON.parse(e.postData.contents);
+      Logger.log('Formato: JSON');
+    } else {
+      throw new Error('No se recibieron datos en el request');
     }
 
-    Logger.log('Datos raw: ' + e.postData.contents);
+    Logger.log('Nombre: ' + data.nombre);
+    Logger.log('Plan: ' + data.plan);
 
-    // El script de Yany probablemente procesaba FormData directo o JSON. 
-    // Como en nuestro React mandamos JSON, parseamos normal:
-    const data = JSON.parse(e.postData.contents);
-
-    // Bypass recaptcha si token es 'not_configured' o la clave no fue configurada
+    // Bypass recaptcha si token es 'not_configured'
     if (data.recaptcha_token && data.recaptcha_token !== 'not_configured' && CONFIG.RECAPTCHA_SECRET !== 'TU_SECRET_KEY_AQUI') {
       if (!verificarRecaptcha(data.recaptcha_token)) throw new Error('reCAPTCHA inválido');
     }
@@ -50,30 +50,22 @@ function doPost(e) {
     try { enviarEmailNotificacion(data); } catch (err) { Logger.log("Error email Eureka: " + err.message); }
     try { if (data.email) enviarEmailConfirmacion(data); } catch (err) { Logger.log("Error email cliente: " + err.message); }
 
-    // Respuesta exitosa
-    const response = ContentService.createTextOutput(JSON.stringify({ success: true }))
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true }))
       .setMimeType(ContentService.MimeType.JSON);
-
-    return response;
 
   } catch (error) {
     Logger.log('❌ ERROR FATAL: ' + error.message);
-    const errorResponse = ContentService.createTextOutput(JSON.stringify({ success: false, error: error.message }))
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: error.message }))
       .setMimeType(ContentService.MimeType.JSON);
-
-    return errorResponse;
   } finally {
     lock.releaseLock();
   }
 }
 
-// Función obligatoria para habilitar el Preflight (OPTIONS) de CORS cuando hay 'application/json'
+// Responde al preflight OPTIONS de CORS
 function doOptions(e) {
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
   return ContentService.createTextOutput("")
     .setMimeType(ContentService.MimeType.JSON);
 }

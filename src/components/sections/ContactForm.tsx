@@ -92,21 +92,18 @@ export function ContactForm() {
 
             const endpoint = (import.meta as unknown as { env: Record<string, string> }).env.VITE_FORM_ENDPOINT
                 || "https://script.google.com/macros/s/AKfycbyT_tcFbme3wJ5006f3Iwv_WCay4grmHXjpDUeSe5qFP73wtj0hrEtvUw8YGFfJs8RQ4A/exec"
-            if (endpoint) {
-                // Configuración IDÉNTICA al sitio funcional (ortodoncia-script.js)
-                await fetch(endpoint, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                });
-            } else {
-                // Dev fallback: log payload y simular delay
-                console.info("[ContactForm] Payload (dev):", payload)
-                await new Promise((r) => setTimeout(r, 1200))
-            }
+
+            // URLSearchParams = application/x-www-form-urlencoded
+            // Es el único Content-Type "simple" que funciona con no-cors + Google Apps Script
+            // El script lo lee como e.parameter.nombre, e.parameter.email, etc.
+            const params = new URLSearchParams()
+            Object.entries(payload).forEach(([key, value]) => params.append(key, String(value)))
+
+            await fetch(endpoint, {
+                method: "POST",
+                mode: "no-cors",
+                body: params,
+            })
             setFormState("success")
         } catch (err) {
             console.error("[ContactForm] Error al enviar:", err)
