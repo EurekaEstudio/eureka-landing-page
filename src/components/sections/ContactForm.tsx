@@ -90,8 +90,7 @@ export function ContactForm() {
                 timestamp: new Date().toISOString(),
             }
 
-            const endpoint = (import.meta as unknown as { env: Record<string, string> }).env.VITE_FORM_ENDPOINT
-                || "https://script.google.com/macros/s/AKfycbzNiMlRTHy4oncRlmkNBns1sldFdonhlpR_jinlpDY4XKhfioDCW2seOWS4QYa0OPJ-1w/exec"
+            const endpoint = import.meta.env.VITE_FORM_ENDPOINT || "https://script.google.com/macros/s/AKfycbww2wiSpVMS4lrp27khiEmM6Dtl9QyV2FRVXfgaupSedN6fX-kG2wmeMfVfWKSW0nFhyw/exec"
 
             // URLSearchParams = application/x-www-form-urlencoded
             // Es el único Content-Type "simple" que funciona con no-cors + Google Apps Script
