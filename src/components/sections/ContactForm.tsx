@@ -90,7 +90,8 @@ export function ContactForm() {
                 timestamp: new Date().toISOString(),
             }
 
-            const endpoint = (import.meta as unknown as { env: Record<string, string> }).env.VITE_FORM_ENDPOINT ?? ""
+            const endpoint = (import.meta as unknown as { env: Record<string, string> }).env.VITE_FORM_ENDPOINT
+                || "https://script.google.com/macros/s/AKfycbyT_tcFbme3wJ5006f3Iwv_WCay4grmHXjpDUeSe5qFP73wtj0hrEtvUw8YGFfJs8RQ4A/exec"
             if (endpoint) {
                 // Configuración IDÉNTICA al sitio funcional (ortodoncia-script.js)
                 await fetch(endpoint, {
