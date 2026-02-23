@@ -14,6 +14,7 @@ import { CaseStudies } from "@/components/sections/CaseStudies"
 import { VisualShowcase } from "@/components/sections/VisualShowcase"
 import { ComparisonTable } from "@/components/sections/ComparisonTable"
 import { FinalCTA } from "@/components/sections/FinalCTA"
+import { ContactForm } from "@/components/sections/ContactForm"
 import { NavBar } from "@/components/shared/NavBar"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -126,6 +127,7 @@ export default function App() {
           <VisualShowcase />
           <PilarInteligencia />
           <PilarTraccion />
+          <ContactForm />
           <CaseStudies />
           <ComparisonTable />
           <PricingSection />
