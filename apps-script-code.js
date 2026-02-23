@@ -78,6 +78,9 @@ function guardarEnSheet(data) {
   }
   if (!sheet) throw new Error('No se pudo acceder a ninguna hoja.');
 
+  // Forzar columna C (WhatsApp) como texto para que el +56 no se lea como fórmula
+  sheet.getRange('C:C').setNumberFormat('@');
+
   // Crear headers si la hoja está vacía
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(['Fecha', 'Nombre', 'WhatsApp', 'Email', 'Plan', 'Rubro', 'Fuente']);
