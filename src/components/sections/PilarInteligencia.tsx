@@ -15,6 +15,10 @@ export function PilarInteligencia() {
   useEffect(() => {
     if (!bentoRef.current) return
 
+    // Skip animations on mobile to prevent scroll issues
+    const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    if (isMobile) return
+
     const cells = bentoRef.current.querySelectorAll(".bento-cell")
     gsap.fromTo(
       cells,

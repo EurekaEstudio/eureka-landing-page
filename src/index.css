@@ -207,25 +207,37 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
 }
 
 @keyframes logo-cloud-scroll {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -242,8 +254,15 @@
   }
 }
 
-/* Move reCAPTCHA badge to the left so it doesn't overlap the chat widget */
+/* reCAPTCHA: show only the small icon, expand on hover */
 .grecaptcha-badge {
+  width: 70px !important;
   left: 14px !important;
   right: auto !important;
+  overflow: hidden !important;
+  transition: width 0.3s ease !important;
+}
+
+.grecaptcha-badge:hover {
+  width: 256px !important;
 }

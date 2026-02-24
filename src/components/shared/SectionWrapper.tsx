@@ -21,7 +21,20 @@ export function SectionWrapper({ id, children, className, noPadding }: SectionWr
 
     const el = sectionRef.current
 
-    // Fade-in animation
+    // On mobile, skip all GSAP animations — they cause scroll to feel stuck
+    const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    if (isMobile) {
+      // Just track section views without animation
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 60%",
+        once: true,
+        onEnter: () => trackSectionView(id),
+      })
+      return
+    }
+
+    // Fade-in animation (desktop only)
     gsap.fromTo(
       el,
       { opacity: 0, y: 60 },
