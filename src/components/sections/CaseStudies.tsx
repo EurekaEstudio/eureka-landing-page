@@ -123,7 +123,7 @@ export function CaseStudies() {
                     <button
                         onClick={() => {
                             trackCTAClick("case_studies")
-                            const formElement = document.getElementById('formulario')
+                            const formElement = document.getElementById('contacto')
                             if (formElement) {
                                 formElement.scrollIntoView({ behavior: 'smooth' })
                             }

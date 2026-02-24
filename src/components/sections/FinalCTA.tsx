@@ -22,7 +22,7 @@ export function FinalCTA() {
               </p>
               <button
                 onClick={() => {
-                  const formElement = document.getElementById('formulario')
+                  const formElement = document.getElementById('contacto')
                   if (formElement) {
                     formElement.scrollIntoView({ behavior: 'smooth' })
                   }

@@ -56,7 +56,7 @@ export function Pricing({ plans, title, subtitle }: PricingProps) {
     }
     trackCTAClick(`pricing_${plan.name.toLowerCase().replace(/\s+/g, "_")}`)
     // Redigir al formulario de contacto
-    const formElement = document.getElementById('formulario')
+    const formElement = document.getElementById('contacto')
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth' })
     }

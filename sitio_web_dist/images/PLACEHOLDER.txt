@@ -1,0 +1,20 @@
+Para que la página se vea completa, descarga imágenes placeholder de:
+
+https://via.placeholder.com/1920x1080.png?text=Hero+Image
+https://via.placeholder.com/800x600.png?text=Brackets+Metalicos
+https://via.placeholder.com/800x600.png?text=Brackets+Esteticos
+https://via.placeholder.com/800x600.png?text=Invisalign
+https://via.placeholder.com/600x400.png?text=Antes+1
+https://via.placeholder.com/600x400.png?text=Despues+1
+https://via.placeholder.com/600x400.png?text=Antes+2
+https://via.placeholder.com/600x400.png?text=Despues+2
+https://via.placeholder.com/600x400.png?text=Antes+3
+https://via.placeholder.com/600x400.png?text=Despues+3
+https://via.placeholder.com/600x400.png?text=Antes+4
+https://via.placeholder.com/600x400.png?text=Despues+4
+
+Renombra según corresponda:
+- brackets-metalicos.jpg
+- brackets-esteticos.jpg
+- invisalign.jpg
+- antes-1.jpg hasta despues-4.jpg

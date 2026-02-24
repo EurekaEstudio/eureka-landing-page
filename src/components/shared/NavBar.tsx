@@ -60,7 +60,7 @@ export function NavBar() {
         <button
           onClick={() => {
             trackCTAClick("nav_cta")
-            scrollTo("#formulario")
+            scrollTo("#contacto")
           }}
           className="hidden md:inline-flex text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors"
         >
@@ -101,7 +101,7 @@ export function NavBar() {
           <button
             onClick={() => {
               trackCTAClick("nav_cta_mobile")
-              scrollTo("#formulario")
+              scrollTo("#contacto")
             }}
             className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-3 rounded-lg w-full mt-2"
           >
