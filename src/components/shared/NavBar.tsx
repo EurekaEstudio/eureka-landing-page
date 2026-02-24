@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BRAND } from "@/lib/constants"
 import { trackCTAClick } from "@/lib/tracking"
-
 
 const NAV_LINKS = [
   { label: "Qué Hacemos", href: "#infraestructura" },
@@ -12,7 +11,6 @@ const NAV_LINKS = [
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -22,7 +20,6 @@ export function NavBar() {
 
   const scrollTo = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
-    setMobileOpen(false)
   }
 
   return (
@@ -40,7 +37,16 @@ export function NavBar() {
           className="flex items-center"
           aria-label="Ir al inicio"
         >
-          <img src={BRAND.logo} alt={BRAND.name} className="h-8 w-auto" />
+          <img
+            src={BRAND.logo}
+            alt={BRAND.name}
+            /* Mobile: h-10 (40px) — más grande que antes (h-8=32px).
+               Desktop: h-8 (32px) — igual que antes */
+            className="h-10 md:h-8 w-auto"
+            width="480"
+            height="480"
+            decoding="async"
+          />
         </button>
 
         {/* Desktop Links */}
@@ -56,58 +62,18 @@ export function NavBar() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTA — Desktop: solo visible en md+.
+            Mobile: siempre visible (reemplaza al menú hamburguesa) */}
         <button
           onClick={() => {
             trackCTAClick("nav_cta")
-            window.location.href = '#contacto'
+            window.location.href = "#contacto"
           }}
-          className="hidden md:inline-flex text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+          className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+          aria-label="Ir al formulario de contacto"
         >
           Cotizar
         </button>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-white p-2"
-          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
-            ) : (
-              <path d="M3 12h18M3 6h18M3 18h18" strokeLinecap="round" />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-          } bg-black/95 backdrop-blur-xl border-t border-white/5`}
-      >
-        <div className="px-6 py-4 flex flex-col gap-1">
-          {NAV_LINKS.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="text-sm text-white/60 hover:text-white transition-colors py-3 text-left"
-            >
-              {link.label}
-            </button>
-          ))}
-          <button
-            onClick={() => {
-              trackCTAClick("nav_cta_mobile")
-              window.location.href = '#contacto'
-            }}
-            className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-3 rounded-lg w-full mt-2"
-          >
-            Cotizar
-          </button>
-        </div>
       </div>
     </nav>
   )

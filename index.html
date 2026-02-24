@@ -15,9 +15,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://eurekaestudiocreativo.com" />
 
-  <!-- Preconnect for fonts -->
+  <!-- Preconnect: fonts + WordPress CDN que sirve imágenes del portfolio -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://eurekaestudiocreativo.com" crossorigin />
+  <!-- dns-prefetch como fallback para navegadores que no soportan preconnect -->
+  <link rel="dns-prefetch" href="https://eurekaestudiocreativo.com" />
 
   <!-- Preload critical font for faster FCP -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style"

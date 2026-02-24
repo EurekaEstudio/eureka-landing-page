@@ -39,6 +39,9 @@ export function LogoCloud() {
                 src={src}
                 alt="Cliente"
                 loading="lazy"
+                decoding="async"
+                width="250"
+                height="100"
                 className="h-full w-auto max-w-[250px] min-w-[120px] object-contain brightness-110 md:min-w-[120px] md:max-w-[250px]"
               />
             </div>

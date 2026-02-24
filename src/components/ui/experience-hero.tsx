@@ -217,6 +217,9 @@ export function ExperienceHero() {
               src={BRAND.logo}
               alt={BRAND.name}
               className="h-16 md:h-20 lg:h-24 w-auto"
+              width="480"
+              height="480"
+              decoding="async"
             />
           </div>
 

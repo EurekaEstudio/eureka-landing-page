@@ -6,7 +6,7 @@ export default function ImageGallery() {
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-            {/* Desktop View: Interactive expanding items */}
+            {/* Desktop View: Interactive expanding accordion */}
             <div className="hidden md:flex items-center gap-3 h-[450px] w-full">
                 {images.map((img, idx) => (
                     <div
@@ -23,6 +23,12 @@ export default function ImageGallery() {
                             src={img.src}
                             alt={img.alt}
                             loading="lazy"
+                            decoding="async"
+                            /* Real dimensions: 862×1080 — displayed at dynamic flex width × 450px */
+                            width="862"
+                            height="1080"
+                            /* Hint browser: collapsed ~150px, expanded ~450px on large screens */
+                            sizes="(max-width: 1280px) 25vw, 450px"
                         />
                         {/* Subtle overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -30,7 +36,7 @@ export default function ImageGallery() {
                 ))}
             </div>
 
-            {/* Mobile View: High-performance grid */}
+            {/* Mobile View: Fixed 2-column grid — images are 399×499px slots (aspect-[4/5]) */}
             <div className="md:hidden grid grid-cols-2 gap-3 w-full">
                 {images.map((img, idx) => (
                     <div
@@ -42,6 +48,12 @@ export default function ImageGallery() {
                             src={img.src}
                             alt={img.alt}
                             loading="lazy"
+                            decoding="async"
+                            /* Real dimensions: 862×1080 */
+                            width="862"
+                            height="1080"
+                            /* On mobile: each cell is ~(50vw - gap) ≈ 180px on a 375px screen */
+                            sizes="(max-width: 768px) calc(50vw - 16px), 430px"
                         />
                     </div>
                 ))}

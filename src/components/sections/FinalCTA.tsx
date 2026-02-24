@@ -15,7 +15,14 @@ export function FinalCTA() {
             {/* Brand */}
             <div className="max-w-sm">
               <a href={BRAND.website} target="_blank" rel="noopener noreferrer">
-                <img src={BRAND.logo} alt={BRAND.name} className="h-20 md:h-24 w-auto mb-4" />
+                <img
+                  src={BRAND.logo}
+                  alt={BRAND.name}
+                  className="h-20 md:h-24 w-auto mb-4"
+                  width="480"
+                  height="480"
+                  decoding="async"
+                />
               </a>
               <p className="text-sm text-white/40 leading-relaxed mb-8">
                 {c.footer.tagline}

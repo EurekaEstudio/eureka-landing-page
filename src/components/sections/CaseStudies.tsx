@@ -109,6 +109,9 @@ export function CaseStudies() {
                                     alt={BRAND.ceo.name}
                                     className="w-full h-full object-cover opacity-80"
                                     loading="lazy"
+                                    decoding="async"
+                                    width="176"
+                                    height="176"
                                 />
                             </div>
                             <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl -z-10" />
