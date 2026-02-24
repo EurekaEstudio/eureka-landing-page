@@ -120,7 +120,7 @@
 
     <!-- Initial Message Bubble -->
     <div id="initial-message-bubble" class="show">
-      <span>Hola, soy Gaby de Eureka. ¿En qué puedo ayudarte?</span>
+      <span>Psst... ¿te imaginas una página así para tu negocio? 👀</span>
       <button id="bubble-close" aria-label="Cerrar">&times;</button>
     </div>
 
@@ -723,6 +723,18 @@
         showWidget();
         setTimeout(function () {
           if (!container.classList.contains('is-open')) {
+            // Scroll-triggered open: replace default welcome with proactive message
+            var welc = messagesEl.querySelectorAll('.welcome-msg-item');
+            welc.forEach(function (el) { el.remove(); });
+            var div = document.createElement('div');
+            div.className = 'chat-msg bot welcome-msg-item';
+            var bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'chat-msg-bubble';
+            bubbleDiv.textContent = '¿Te imaginas una página como esta trabajando para tu negocio 24/7? Solo quería que supieras que podemos hacerlo realidad. 😊';
+            div.appendChild(bubbleDiv);
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+
             container.classList.add('is-open');
             if (bubble) bubble.classList.remove('show');
             if (inputEl) inputEl.focus();
