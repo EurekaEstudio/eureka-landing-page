@@ -4,25 +4,25 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { COPY, BRAND } from "@/lib/constants"
 import { trackScrollDepth } from "@/lib/tracking"
-import { PilarInfraestructura } from "@/components/sections/PilarInfraestructura"
-import { PilarInteligencia } from "@/components/sections/PilarInteligencia"
-import { PilarTraccion } from "@/components/sections/PilarTraccion"
-import { PricingSection } from "@/components/sections/PricingSection"
-import { FAQSection } from "@/components/sections/FAQSection"
-import { LogoCloud } from "@/components/sections/LogoCloud"
-import { CaseStudies } from "@/components/sections/CaseStudies"
-import { VisualShowcase } from "@/components/sections/VisualShowcase"
-import { ComparisonTable } from "@/components/sections/ComparisonTable"
-import { FinalCTA } from "@/components/sections/FinalCTA"
-import { ContactForm } from "@/components/sections/ContactForm"
 import { NavBar } from "@/components/shared/NavBar"
 
 gsap.registerPlugin(ScrollTrigger)
 
 // Lazy load the heavy 3D hero (~600KB three.js bundle)
-const ExperienceHero = lazy(
-  () => import("@/components/ui/experience-hero"),
-)
+const ExperienceHero = lazy(() => import("@/components/ui/experience-hero"))
+
+// Lazy load below-the-fold components to improve FCP & TTI
+const PilarInfraestructura = lazy(() => import("@/components/sections/PilarInfraestructura").then(m => ({ default: m.PilarInfraestructura })))
+const PilarInteligencia = lazy(() => import("@/components/sections/PilarInteligencia").then(m => ({ default: m.PilarInteligencia })))
+const PilarTraccion = lazy(() => import("@/components/sections/PilarTraccion").then(m => ({ default: m.PilarTraccion })))
+const PricingSection = lazy(() => import("@/components/sections/PricingSection").then(m => ({ default: m.PricingSection })))
+const FAQSection = lazy(() => import("@/components/sections/FAQSection").then(m => ({ default: m.FAQSection })))
+const LogoCloud = lazy(() => import("@/components/sections/LogoCloud").then(m => ({ default: m.LogoCloud })))
+const CaseStudies = lazy(() => import("@/components/sections/CaseStudies").then(m => ({ default: m.CaseStudies })))
+const VisualShowcase = lazy(() => import("@/components/sections/VisualShowcase").then(m => ({ default: m.VisualShowcase })))
+const ComparisonTable = lazy(() => import("@/components/sections/ComparisonTable").then(m => ({ default: m.ComparisonTable })))
+const FinalCTA = lazy(() => import("@/components/sections/FinalCTA").then(m => ({ default: m.FinalCTA })))
+const ContactForm = lazy(() => import("@/components/sections/ContactForm").then(m => ({ default: m.ContactForm })))
 
 // Minimal fallback while 3D loads — MUST match actual hero layout EXACTLY to prevent layout shift
 function HeroFallback() {
@@ -122,17 +122,19 @@ export default function App() {
 
         {/* CONTENT SECTIONS */}
         <div className="relative z-10 bg-background">
-          <LogoCloud />
-          <PilarInfraestructura />
-          <VisualShowcase />
-          <PilarInteligencia />
-          <PilarTraccion />
-          <ContactForm />
-          <CaseStudies />
-          <ComparisonTable />
-          <PricingSection />
-          <FAQSection />
-          <FinalCTA />
+          <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <LogoCloud />
+            <PilarInfraestructura />
+            <VisualShowcase />
+            <PilarInteligencia />
+            <PilarTraccion />
+            <ContactForm />
+            <CaseStudies />
+            <ComparisonTable />
+            <PricingSection />
+            <FAQSection />
+            <FinalCTA />
+          </Suspense>
         </div>
       </main>
     </div>
