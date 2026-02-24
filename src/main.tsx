@@ -6,7 +6,14 @@ import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <GoogleReCaptchaProvider reCaptchaKey={(import.meta as unknown as { env: Record<string, string> }).env.VITE_RECAPTCHA_SITE_KEY || "6LeLlXUsAAAAAA3NpMuCUTk7-U01A0UBodfQXmqP"}>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={(import.meta as unknown as { env: Record<string, string> }).env.VITE_RECAPTCHA_SITE_KEY || "6LeLlXUsAAAAAA3NpMuCUTk7-U01A0UBodfQXmqP"}
+      container={{
+        parameters: {
+          badge: 'bottomleft'
+        }
+      }}
+    >
       <App />
     </GoogleReCaptchaProvider>
   </React.StrictMode>,
