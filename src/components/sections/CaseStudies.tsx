@@ -1,11 +1,10 @@
 import { COPY, BRAND } from "@/lib/constants"
 import { trackCTAClick } from "@/lib/tracking"
-import { openChatWithIntent } from "@/hooks/use-chat-widget"
+
 import { FloatingGeometrics } from "@/components/ui/svg-decorations"
 
 export function CaseStudies() {
-    const { badge, title, subtitle, cases, closingText, cta, ctaIntent } =
-        COPY.caseStudies
+    COPY.caseStudies
 
     return (
         <section
@@ -124,10 +123,13 @@ export function CaseStudies() {
                     <button
                         onClick={() => {
                             trackCTAClick("case_studies")
-                            openChatWithIntent(ctaIntent)
+                            const formElement = document.getElementById('formulario')
+                            if (formElement) {
+                                formElement.scrollIntoView({ behavior: 'smooth' })
+                            }
                         }}
                         className="inline-flex items-center gap-2.5 px-8 py-4 bg-primary text-primary-foreground font-semibold text-base rounded-xl hover:scale-105 hover:glow-cyan-strong transition-all duration-300 group"
-                        aria-label="Ver cómo podemos ayudarte - Hablar con Eureka"
+                        aria-label="Ver cómo podemos ayudarte - Ir al formulario"
                     >
                         {cta}
                         <svg

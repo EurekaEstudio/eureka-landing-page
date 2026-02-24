@@ -1,11 +1,11 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import NumberFlow from "@number-flow/react"
 import confetti from "canvas-confetti"
 import { Check, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { openChatWithIntent } from "@/hooks/use-chat-widget"
+
 import { trackCTAClick } from "@/lib/tracking"
 
 interface PricingPlan {
@@ -55,7 +55,11 @@ export function Pricing({ plans, title, subtitle }: PricingProps) {
       }
     }
     trackCTAClick(`pricing_${plan.name.toLowerCase().replace(/\s+/g, "_")}`)
-    openChatWithIntent(plan.chatIntent)
+    // Redigir al formulario de contacto
+    const formElement = document.getElementById('formulario')
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (

@@ -17,9 +17,20 @@ export function FinalCTA() {
               <a href={BRAND.website} target="_blank" rel="noopener noreferrer">
                 <img src={BRAND.logo} alt={BRAND.name} className="h-20 md:h-24 w-auto mb-4" />
               </a>
-              <p className="text-sm text-white/40 leading-relaxed">
+              <p className="text-sm text-white/40 leading-relaxed mb-8">
                 {c.footer.tagline}
               </p>
+              <button
+                onClick={() => {
+                  const formElement = document.getElementById('formulario')
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-primary text-primary-foreground font-semibold text-sm rounded-xl hover:scale-105 hover:glow-cyan-strong transition-all duration-300 group mb-10"
+              >
+                {c.ctaPrimary}
+              </button>
             </div>
 
             {/* Nav Links */}
