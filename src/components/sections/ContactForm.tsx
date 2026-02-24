@@ -112,7 +112,7 @@ function ContactFormInner() {
             const w = window as any
             if (w.dataLayer) {
                 w.dataLayer.push({
-                    event: "form_submission",
+                    event: "generate_lead",
                     form_name: "contact_landing",
                     plan: selectedPlan
                 })
