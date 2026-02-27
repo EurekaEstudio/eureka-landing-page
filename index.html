@@ -632,8 +632,27 @@
       }
 
       // Show/hide typing
-      function showTyping() { typingEl.style.display = 'block'; messagesEl.scrollTop = messagesEl.scrollHeight; }
+      function showTyping() { typingEl.style.display = 'block'; messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' }); }
       function hideTyping() { typingEl.style.display = 'none'; }
+
+      // Disable/enable input to prevent spam
+      function disableChatInput() {
+        inputEl.disabled = true;
+        sendBtn.disabled = true;
+        inputEl.placeholder = 'Gaby está escribiendo...';
+        inputEl.style.opacity = '0.6';
+        sendBtn.style.opacity = '0.6';
+      }
+      function enableChatInput() {
+        inputEl.disabled = false;
+        sendBtn.disabled = false;
+        inputEl.placeholder = 'Escribe tu mensaje...';
+        inputEl.style.opacity = '1';
+        sendBtn.style.opacity = '1';
+        if (container.classList.contains('is-open')) {
+          inputEl.focus();
+        }
+      }
 
       // Hide quick responses after first interaction
       function hideQR() { qrContainer.style.display = 'none'; }
@@ -649,6 +668,7 @@
         if (typeof retryCount === 'undefined') retryCount = 0;
 
         showTyping();
+        disableChatInput();
         var payload = {
           action: 'sendMessage',
           chatInput: message,
@@ -679,19 +699,23 @@
             return res.json();
           })
           .then(function (data) {
+            if (!data) return; // Es un reintento, data es null
             hideTyping();
-            if (!data) return;
+            enableChatInput();
             var reply = data.output || data.response || data.text || data.message;
             if (reply) {
               addMessage(reply, 'bot');
             }
           })
           .catch(function () {
-            hideTyping();
             if (retryCount < MAX_RETRIES) {
               setTimeout(function () {
                 sendToWebhook(message, isQR, retryCount + 1);
               }, 1500);
+            } else {
+              hideTyping();
+              enableChatInput();
+              addMessage('Lo siento, hubo un problema de conexión. Por favor intenta de nuevo.', 'bot');
             }
           });
       }
