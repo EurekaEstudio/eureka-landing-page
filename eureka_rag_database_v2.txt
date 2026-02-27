@@ -1,0 +1,162 @@
+[Identidad Corporativa, Eslogan y Filosofía]
+topic: vision_corporativa
+intent: conocer_la_empresa_filosofia
+keywords: comunica transmite vende, agencia integral, historia, experiencia, clientes, salud, storytelling
+price_range: n/a
+meta_description: Filosofía central de Eureka Estudio Creativo y su eslogan "Comunica, transmite, vende", enfocado en la claridad, la emoción y el resultado.
+texto:
+Eureka Estudio Creativo es una agencia integral con cerca de 5 años de experiencia en el mercado. Nuestro principal lema y eslogan es: "Comunica, Transmite, Vende".
+- COMUNICA: Nos enfocamos en que exista una comunicación clara. Si la gente no te entiende, no te va a comprar, por más que tengas la mejor página web del mundo e inviertas millones en anuncios.
+- TRANSMITE: Buscamos siempre ponerle emoción al mensaje con un storytelling fuerte. Nos enfocamos en un mensaje muy específico y dirigido al público objetivo para mejorar exponencialmente los resultados.
+- VENDE: A través de una buena estrategia técnica y comunicacional, conseguimos los resultados. Estos resultados muchas veces son ventas directas, pero en otros casos son alcance, generación de leads calificados o conversiones específicas.
+
+[Catálogo Integral de Servicios Eureka]
+topic: servicios_agencia
+intent: conocer_todos_los_servicios
+keywords: desarrollo web, automatizacion n8n, agente ia, consultoria ia, email marketing, meta ads, google ads, redes sociales, reels, creacion contenido, fotografia profesional, youtube
+price_range: Variable según servicio
+meta_description: Eureka funciona como una agencia integral. Ofrece desarrollo web, automatización de IA, manejo de anuncios, redes sociales, contenido en terreno, fotografía y consultoría.
+texto:
+Aunque destacamos fuertemente en la creación de "Smart Websites" (Landing Pages con IA), Eureka opera como una Agencia Integral de comunicaciones y tecnología. Nuestros servicios abarcan:
+1. Desarrollo Web y Landing Pages: Plataformas de alta conversión orientadas a resultados.
+2. Automatizaciones de Procesos con IA (n8n / Make): Eliminación de tareas repetitivas para ahorrar cientos de horas hombre. (Ejemplos prácticos: Extraer datos de facturas automáticamente, calificar y distribuir leads desde Facebook Ads directamente a diferentes vendedores en el CRM según el nivel de ingresos, o leer correos entrantes para agendar reuniones automáticamente en Google Calendar).
+3. Agentes de Inteligencia Artificial y Consultoría IA: Implementación de chatbots avanzados tipo GPT y asesoría estratégica corporativa para adoptar Inteligencia Artificial.
+4. Campañas de Email Marketing: Secuencias de nutrición de prospectos bajo la misma filosofía de comunicación clara y directa.
+5. Performance Ads (Anuncios): Campañas en Google Ads y Meta Ads (Facebook/Instagram) creadas con embudos de venta comprobados, segmentación profesional de audiencias y un enfoque puro en resultados de negocio (ROAS).
+6. Creación de Contenido para Redes Sociales: Brindamos un servicio "End-to-End". Desde la estrategia conceptual hasta ir a terreno a grabar con cámaras profesionales. Entregamos Reels, videos e imágenes gráficas súper creativas con un nivel de calidad sobresaliente.
+7. Fotografía Profesional: En locación corporativa o sesiones de estudio personalizadas.
+8. Consultoría en Comunicaciones Digitales: Planificación de estrategias y optimización avanzada de canales de YouTube para crecimiento orgánico de la marca.
+
+[Experiencia y Clientes Destacados]
+topic: experiencia_clientes
+intent: validacion_mercado_clientes
+keywords: salud, clinica dental yany, fundacion para el progreso, ideapais, fpp, gobierno de santiago, años de experiencia, nichos diversos
+price_range: n/a
+meta_description: Portafolio de clientes y experiencia de casi 5 años en diversos nichos, destacando especialmente el rubro de la salud y clientes institucionales.
+texto:
+Contamos con cerca de 5 años de trayectoria profesional de alto nivel en el mercado. En todo este tiempo hemos trabajado de forma muy exitosa en una amplia diversidad de nichos. Tenemos una experiencia especialmente fuerte desarrollando estrategias y contenido en el RUBRO DE LA SALUD. 
+Entre nuestros clientes institucionales y corporativos más grandes y reconocidos, a quienes les hemos brindado servicios desde campañas, webs y automatizaciones integrales, se encuentran:
+- Fundación para el Progreso (FPP)
+- IdeaPaís
+- Gobierno de Santiago de Chile
+- Clínica Dental Yany
+
+----selección---
+
+[El Problema del Mercado: Ruido y Fuga de Capital]
+topic: consultoria
+intent: diagnostico_problemas
+keywords: visibilidad, conversion, ruido, fuga, ventas, ineficiencia, leads perdidos, atención al cliente
+price_range: n/a
+meta_description: Análisis de los dos grandes problemas de los negocios hoy: la falta de visibilidad en el mercado y la pérdida de clientes por demoras en la atención o falta de calificación.
+texto:
+Todo negocio actual se enfrenta a dos grandes problemas que limitan su crecimiento:
+1. EL RUIDO (Problema de Visibilidad): Hay demasiada competencia. Las empresas publican mensajes confusos, y las páginas web tradicionales funcionan como folletos estáticos que no convierten. Resultado: el negocio es invisible y la inversión se desperdicia.
+2. LA FUGA (Problema de Conversión): Las empresas reciben consultas pero tardan más de 5 minutos en responder. Una respuesta demorada hace que la probabilidad de venta caiga. Además, los asesores humanos pierden horas filtrando "curiosos". Resultado: se pierde dinero y tiempo.
+Eureka soluciona esto instalando Sistemas Inteligentes (Smart Websites) que comunican con claridad, atienden al instante, y entregan solo clientes calificados.
+
+----selección---
+
+[Metodología Estricta: Framework de 90 Días y Tiempos Oficiales]
+topic: metodologia
+intent: saber_como_trabajan_tiempos
+keywords: fases, diagnostico, piloto, validacion, optimizacion, tiempos de entrega, plazos, correcciones, onboarding
+price_range: n/a
+meta_description: Detalle exacto de las fases de implementación operativa, plazos de entrega formales para los Smart Websites e hitos del proyecto.
+texto:
+Nuestro trabajo se rige por un esquema estricto de implementación para asegurar resultados tangibles (Framework de 90 días):
+* Fase 1: Diagnóstico (Semanas 1-2): Auditoría de procesos comerciales actuales y diseño del flujo de clientes.
+* Fase 2: Implementación Piloto (Semanas 3-4): Construcción del Smart Website o soluciones web, y entrenamiento del primer Agente IA conversacional.
+* Fase 3: Validación (Semanas 5-8): Monitoreo de conversaciones reales para refinar las respuestas de la IA y optimizar tasas de conversión.
+* Fase 4: Expansión (Mes 3+): Parametrización profunda y automatización de otros departamentos.
+
+Condiciones de Tiempo Oficiales:
+- Una vez firmado el acuerdo, el Onboarding (reunión de arranque) ocurre en un máximo de 48 horas.
+- El desarrollo del Smart Website (primera entrega para revisión) tarda oficialmente 20 días hábiles.
+- Tras esta entrega, se abre un periodo de correcciones menores antes del lanzamiento oficial en vivo.
+
+----selección---
+
+[OFERTA ESPECÍFICA: Plan 1 - Smart Website Base (La Máquina de Captación)]
+topic: planes_precios
+intent: comprar_landing_base
+keywords: smart website, automatizacion, google sheets, landing page, cro, diseño, pago unico, notificaciones
+price_range: 249.990 CLP
+meta_description: Detalles técnicos y condiciones del Plan Base de automatización web.
+texto:
+Plan 1: Smart Website Base.
+Inversión: $249.990 CLP (Exento de IVA). Es un pago único bajo la modalidad "llave en mano".
+Condiciones: Incluye el costo de Hosting (servidor) y Dominio (.com o .cl) por el primer año. Si el cliente ya los tiene, ese costo se descuenta del total.
+¿Qué incluye a nivel técnico?
+- Diseño Web de alta conversión (CRO) estructurado en una sola página larga (One-Page) sin distracciones.
+- Textos persuasivos (Copywriting) diseñados para vender.
+- Automatización Básica de Formularios: Cuando un cliente llena sus datos, sus respuestas viajan automáticamente a un Google Sheets privado del dueño, y se envían alertas por correo electrónico en tiempo real para acelerar el contacto humano.
+
+----selección---
+
+[OFERTA ESPECÍFICA: Plan 2 - Smart Website Avanzado con Agente IA]
+topic: planes_precios
+intent: automatizar_ventas_ia
+keywords: agente ia, chatbot inteligente, precalificacion, ventas automaticas, crm, pack avanzado, mantencion ia
+price_range: 499.990 CLP setup / 50.000 CLP mantencion
+meta_description: El plan más popular de Smart Website que introduce el Agente IA de precalificación de leads.
+texto:
+Plan 2: Smart Website Avanzado (Pack Agente IA - El Más Popular).
+Inversión Inicial (Setup): $499.990 CLP.
+Incluye todo lo del Plan 1 y le suma el "Cerebro" de la operación: un Agente IA instalado en la web (con la opción de ser omnicanal vía WhatsApp).
+
+Condiciones Financieras y Mantenimiento de Inteligencia Artificial:
+- El Setup de $499.990 incluye la construcción del sistema y cubre los primeros 6 MESES de Mantenimiento de IA a costo cero para el cliente.
+- El cliente JAMÁS paga suscripciones adicionales a OpenAI por el consumo natural de interacciones ("tokens"); Eureka absorbe esos costos.
+- Mantención Obligatoria: Desde el Mes 7, el cliente abona un fee de $50.000 CLP mensuales (incluye bolsa holgada de 1.000 interacciones de IA, mantención del flujo n8n y servidor).
+
+Capacidades del Agente:
+Abre la conversación al detectar lectura (scroll), responde dudas con el manual de ventas local, califica presupuesto, y transfiere un "resumen ejecutivo" de la charla al WhatsApp del vendedor.
+
+----selección---
+
+[OFERTA ESPECÍFICA: Plan 3 - Ecosistema Growth (Escalamiento Publicitario)]
+topic: planes_precios
+intent: escalar_negocio_ads
+keywords: ads, google ads, meta ads, pauta, retargeting, scaling, lead generation, ecosistema growth
+price_range: 999.990 CLP setup / 500.000 CLP fee gestion
+meta_description: La solución élite corporativa que suma Agencia de Ads y gestión de tráfico pagado a la infraestructura del Smart Website.
+texto:
+Plan 3: Ecosistema Growth.
+Inversión Inicial (Setup): $999.990 CLP. (Bolsa ampliada a 2.000 interacciones mensuales IA los primeros 6 meses).
+Este servicio equivale a contratar un departamento de marketing de élite completo. Incluye toda la tecnología de los Planes 1 y 2, añadiéndole nuestro servicio experto de Performance Ads (Tráfico pautado).
+
+Condiciones de Agencia Publicitaria:
+- Nuestro equipo configura campañas de Google Ads (búsqueda intencionada) y Meta Ads (Facebook/Instagram), basándonos en embudos de venta comprobados.
+- Fee Mensual de Agencia: Desde el MES 1, el cliente abona $500.000 CLP mensuales por la gestión, análisis riguroso y optimización de los anuncios para maximizar conversiones reales.
+- El presupuesto puro que se paga a Google/Meta Correte NO está incluido y corre por el cliente.
+- Al mes 7, los $50.000 de mantenimiento IA se suman, quedando el fee general en $550.000 CLP fijos mensuales.
+
+----selección---
+
+[Diferencias Técnicas: Web Tradicional vs Smart Landing]
+topic: diferenciadores
+intent: entender_diferencias_web
+keywords: comparativa, landing vs web, conversion, catalogo, interactivo, estatico
+price_range: n/a
+meta_description: Explicación de por qué no vendemos páginas web tradicionales tipo catálogo y nos enfocamos en Smart Landings rentables.
+texto:
+Siempre le explicamos al cliente esta diferencia crucial:
+- Página Web Tradicional: Es un folleto digital. La gente entra al menú "Quiénes Somos / Servicios / Galería", se pierde navegando y se va sin comprar. Mide el éxito en "visitas".
+- Smart Website (Landing de Eureka): Es un embudo de ventas persuasivo montado en una sola página larga y directa, estructurada de acuerdo a nuestro eslogan de clara comunicación. Guía al usuario hacia una única acción definitiva: cotizar o hablar con la IA. Mide el éxito en leads cerrados generados.
+
+----selección---
+
+[Condiciones de Propiedad de Software y Soporte]
+topic: soporte_tecnico_condiciones
+intent: dudas_propiedad_hosting_contratos
+keywords: propiedad del codigo, dueños web, rescision, retencion, independencia, caida de dominios, contratos
+price_range: n/a
+meta_description: Aclaración de las políticas de propiedad. En Eureka el cliente es el dueño de los activos digitales que paga.
+texto:
+Las Políticas de Propiedad y Retención de Eureka son claras y favorables para el cliente:
+1. Sin Contratos de Retención Forzosa (Hostaping): A diferencia de las agencias de marketing antiguas que "secuestran" tu web obligándote a pagar una mensualidad para que no bajen el sitio, en Eureka los desarrollos son "Llave en mano".
+2. Propiedad Absoluta: Al finalizar y entregar la página (Planes 1 y 2), la web te pertenece 100%. Tienes total libertad para migrarla si deseas irte, aunque nuestro servicio hace que los clientes se queden por la calidad y el soporte.
+3. Soporte IA Activo: Para los Agentes IA activos, monitoreamos posibles caídas de las APIs principales (ej. OpenAI) y tenemos protocolos de rescate, de modo que el "cerebro" automatizado del cliente jamás se caiga.
+
+----selección---

@@ -116,11 +116,14 @@
     </div>
 
     <!-- Chat Window -->
-    <div id="chat-window">
+    <div id="chat-window" data-lenis-prevent="true">
       <!-- Header -->
       <div id="chat-header">
         <div id="chat-header-info">
-          <div id="chat-avatar">G</div>
+          <div id="chat-avatar">
+            <img src="https://eurekaestudiocreativo.com/wp-content/uploads/2026/01/agente-transformado-a-gfi.gif"
+              alt="Gaby" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+          </div>
           <div>
             <div id="chat-header-name">Gaby — Eureka IA</div>
             <div id="chat-header-status">En línea</div>
@@ -130,7 +133,7 @@
       </div>
 
       <!-- Messages -->
-      <div id="chat-messages">
+      <div id="chat-messages" data-lenis-prevent="true">
         <div class="chat-msg bot welcome-msg-item">
           <div class="chat-msg-bubble">¡Hola! Soy Gaby, la asistente virtual de Eureka Estudio Creativo. ¿En qué puedo
             ayudarte hoy?</div>
@@ -308,13 +311,11 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #22C6EA, #0EA5E9);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-      color: #000;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
     #chat-header-name {
@@ -338,7 +339,6 @@
       line-height: 1;
     }
 
-    /* Messages */
     #chat-messages {
       flex: 1;
       overflow-y: auto;
@@ -346,6 +346,11 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      /* Scroll fixes */
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 1;
     }
 
     #chat-messages::-webkit-scrollbar {
@@ -577,16 +582,53 @@
         });
       }
 
+      // Helper to parse basic markdown and newlines
+      function parseMarkdown(text) {
+        if (!text) return '';
+        // Escape HTML to prevent XSS
+        var html = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+
+        // Convert \n or literal newlines to <br>
+        html = html.replace(/\r?\n/g, '<br>');
+
+        // Bold: **text**
+        html = html.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+
+        // Links: [label](url)
+        html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" style="color:#22C6EA;text-decoration:underline;">$1</a>');
+
+        // Auto-link loose URLs (handle start of line, space, or <br> tag)
+        var urlRegex = /(^|\s|>)(https?:\/\/[^\s<]+)/g;
+        html = html.replace(urlRegex, '$1<a href="$2" target="_blank" style="color:#22C6EA;text-decoration:underline;">$2</a>');
+
+        return html;
+      }
+
       // Add message to chat
       function addMessage(text, sender) {
         var div = document.createElement('div');
         div.className = 'chat-msg ' + sender;
         var bubbleDiv = document.createElement('div');
         bubbleDiv.className = 'chat-msg-bubble';
-        bubbleDiv.textContent = text;
+
+        // Use innerHTML with our safe parser for links and format
+        bubbleDiv.innerHTML = parseMarkdown(text);
+
         div.appendChild(bubbleDiv);
         messagesEl.appendChild(div);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        // Accurate scroll to bottom
+        setTimeout(function () {
+          messagesEl.scrollTo({
+            top: messagesEl.scrollHeight,
+            behavior: 'smooth'
+          });
+        }, 50);
       }
 
       // Show/hide typing
@@ -722,10 +764,13 @@
             div.className = 'chat-msg bot welcome-msg-item';
             var bubbleDiv = document.createElement('div');
             bubbleDiv.className = 'chat-msg-bubble';
-            bubbleDiv.textContent = '¿Te imaginas tu negocio con una landing como esta?';
+            bubbleDiv.innerHTML = parseMarkdown('¿Te imaginas tu negocio con una landing como esta?');
             div.appendChild(bubbleDiv);
             messagesEl.appendChild(div);
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+
+            setTimeout(function () {
+              messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' });
+            }, 50);
 
             container.classList.add('is-open');
             if (bubble) bubble.classList.remove('show');
