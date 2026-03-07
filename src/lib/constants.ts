@@ -404,7 +404,6 @@ export const COPY = {
         { label: "Tu Asistente IA", href: "#inteligencia" },
         { label: "Tu Publicidad", href: "#traccion" },
         { label: "Casos de Éxito", href: "#casos-exito" },
-        { label: "Precios", href: "#precios" },
         { label: "FAQ", href: "#faq" },
       ],
       services: [

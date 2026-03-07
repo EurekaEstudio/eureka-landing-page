@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { label: "Qué Hacemos", href: "#infraestructura" },
   { label: "Portafolio", href: "#galeria" },
   { label: "Casos de Éxito", href: "#casos-exito" },
-  { label: "Precios", href: "#precios" },
 ]
 
 export function NavBar() {
