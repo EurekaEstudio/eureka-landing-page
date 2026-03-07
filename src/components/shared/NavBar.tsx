@@ -72,7 +72,7 @@ export function NavBar() {
           className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors"
           aria-label="Ir al formulario de contacto"
         >
-          Cotizar
+          Asesoría gratuita
         </button>
       </div>
     </nav>

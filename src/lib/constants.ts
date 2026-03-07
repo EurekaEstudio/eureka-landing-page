@@ -16,8 +16,8 @@ export const COPY = {
     title: "Diseñamos tu próxima página web.",
     morphingTexts: ["agenda citas", "vende sola", "cierra clientes", "envía correos"],
     subtitle:
-      "No es solo una página bonita. Es una landing inteligente con IA integrada que atiende, califica y agenda clientes por ti. Todo en automático.",
-    cta: "Cotizar mi página web",
+      "Eureka es la única agencia en Chile que te entrega una web con IA que ya trabaja desde el día 1, sin que tengas que entender cómo funciona la tecnología.",
+    cta: "Quiero mi diagnóstico gratuito",
     ctaIntent: '{"intent":"cotizar","source":"hero_cta"}',
   },
 

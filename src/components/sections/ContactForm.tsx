@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Phone, Mail, Building2, Send, CheckCircle2, Loader2 } from "lucide-react"
+import { User, Phone, Building2, Send, CheckCircle2, Loader2 } from "lucide-react"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { SectionWrapper } from "@/components/shared/SectionWrapper"
 import { COPY } from "@/lib/constants"
@@ -8,35 +8,21 @@ import { COPY } from "@/lib/constants"
 const RECAPTCHA_KEY = (import.meta as unknown as { env: Record<string, string> }).env.VITE_RECAPTCHA_SITE_KEY || "6LeLlXUsAAAAAA3NpMuCUTk7-U01A0UBodfQXmqP"
 
 
-const PLANS = [
+const OBSTACLES = [
     {
-        key: "base",
-        name: "Smart Landing Base",
-        tagline: "Web que convierte sola",
-        price: "$249.990",
-        emoji: "🚀",
+        key: "web",
+        name: "Mi web está vieja o no tengo",
+        emoji: "🧱",
     },
     {
-        key: "agente",
-        name: "Pack Agente IA",
-        tagline: "Landing + IA 24/7",
-        price: "$499.990",
-        popular: true,
-        emoji: "🤖",
+        key: "mensajes",
+        name: "Me llegan mensajes pero no logro cerrarlos",
+        emoji: "🕸️",
     },
     {
-        key: "growth",
-        name: "Ecosistema Growth",
-        tagline: "Landing + IA + Tráfico",
-        price: "$999.990",
-        emoji: "📈",
-    },
-    {
-        key: "orientacion",
-        name: "No sé aún",
-        tagline: "Quiero orientación gratuita",
-        price: "Auditoría gratis",
-        emoji: "💬",
+        key: "anuncios",
+        name: "Invierto en anuncios pero no veo retorno",
+        emoji: "🏚️",
     },
 ]
 
@@ -54,15 +40,14 @@ type FormState = "idle" | "submitting" | "success" | "error"
 
 // ContactFormInner necesita estar dentro del Provider para usar el hook
 function ContactFormInner() {
-    const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
+    const [selectedObstacle, setSelectedObstacle] = useState<string | null>(null)
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
-    const [email, setEmail] = useState("")
     const [industry, setIndustry] = useState("")
     const [formState, setFormState] = useState<FormState>("idle")
     const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const isValid = name.trim() && phone.trim() && email.trim() && selectedPlan
+    const isValid = name.trim() && phone.trim() && selectedObstacle
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
@@ -86,15 +71,15 @@ function ContactFormInner() {
             const payload = {
                 nombre: name.trim(),
                 whatsapp: phone.trim(),
-                email: email.trim(),
-                plan: selectedPlan,
+                email: "", // Empty to disable email confirmation in Apps Script smoothly
+                plan: OBSTACLES.find(o => o.key === selectedObstacle)?.name || "No especificado", // Pasamos esto en "plan" para que llegue a la columna del Excel sin tocar el script
                 rubro: industry || "No especificado",
                 fuente: "landing_formulario",
                 recaptcha_token: recaptchaToken,
                 timestamp: new Date().toISOString(),
             }
 
-            const endpoint = import.meta.env.VITE_FORM_ENDPOINT || "https://script.google.com/macros/s/AKfycbww2wiSpVMS4lrp27khiEmM6Dtl9QyV2FRVXfgaupSedN6fX-kG2wmeMfVfWKSW0nFhyw/exec"
+            const endpoint = (import.meta as unknown as { env: Record<string, string> }).env.VITE_FORM_ENDPOINT || "https://script.google.com/macros/s/AKfycbww2wiSpVMS4lrp27khiEmM6Dtl9QyV2FRVXfgaupSedN6fX-kG2wmeMfVfWKSW0nFhyw/exec"
 
             // URLSearchParams = application/x-www-form-urlencoded
             // Es el único Content-Type "simple" que funciona con no-cors + Google Apps Script
@@ -114,7 +99,7 @@ function ContactFormInner() {
                 w.dataLayer.push({
                     event: "generate_lead",
                     form_name: "contact_landing",
-                    plan: selectedPlan
+                    plan: selectedObstacle
                 })
             }
 
@@ -140,7 +125,7 @@ function ContactFormInner() {
                     <span className="text-gradient-cyan">Te respondemos en minutos.</span>
                 </h2>
                 <p className="text-lg text-white/50 font-light leading-relaxed max-w-xl mx-auto">
-                    Sin llamadas inesperadas. Solo dejá tus datos y el plan que te interesó — el equipo de Eureka te escribe directo por WhatsApp.
+                    Sin llamadas inesperadas. Solo dejá tus datos y tu principal obstáculo — el equipo de Eureka te escribe directo por WhatsApp.
                 </p>
             </div>
 
@@ -161,11 +146,7 @@ function ContactFormInner() {
                         </h3>
                         <p className="text-white/60 text-base leading-relaxed max-w-md mx-auto">
                             El equipo de Eureka ya tiene tu consulta. Te escribirán por WhatsApp
-                            a la brevedad con toda la info sobre el{" "}
-                            <span className="text-primary font-semibold">
-                                {PLANS.find((p) => p.key === selectedPlan)?.name}
-                            </span>
-                            .
+                            a la brevedad para asesorarte sobre cómo resolver tu situación actual.
                         </p>
                     </motion.div>
                 ) : (
@@ -181,34 +162,25 @@ function ContactFormInner() {
                         <fieldset className="mb-10">
                             <legend className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-5 flex items-center gap-2">
                                 <span className="w-5 h-px bg-white/20" />
-                                01 · ¿Qué plan te interesó?
+                                01 · ¿Cuál es tu principal obstáculo digital hoy?
                             </legend>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                                {PLANS.map((plan) => {
-                                    const isSelected = selectedPlan === plan.key
+                            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3">
+                                {OBSTACLES.map((obs) => {
+                                    const isSelected = selectedObstacle === obs.key
                                     return (
                                         <button
-                                            key={plan.key}
+                                            key={obs.key}
                                             type="button"
-                                            id={`plan-${plan.key}`}
-                                            onClick={() => setSelectedPlan(plan.key)}
+                                            id={`obs-${obs.key}`}
+                                            onClick={() => setSelectedObstacle(obs.key)}
                                             className={`relative text-left rounded-2xl p-5 border transition-all duration-300 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${isSelected
                                                 ? "bg-primary/10 border-primary/50 glow-cyan"
                                                 : "glass border-white/8 hover:border-white/20 hover:bg-white/5"
                                                 }`}
                                         >
-                                            {plan.popular && (
-                                                <span className="absolute -top-3 left-4 text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 rounded-full px-3 py-0.5">
-                                                    Popular
-                                                </span>
-                                            )}
-                                            <span className="text-2xl mb-3 block">{plan.emoji}</span>
+                                            <span className="text-2xl mb-3 block">{obs.emoji}</span>
                                             <p className={`text-sm font-semibold leading-snug mb-1 transition-colors duration-200 ${isSelected ? "text-primary" : "text-white group-hover:text-white"}`}>
-                                                {plan.name}
-                                            </p>
-                                            <p className="text-xs text-white/40 leading-snug mb-3">{plan.tagline}</p>
-                                            <p className={`text-xs font-bold ${isSelected ? "text-primary" : "text-white/30"}`}>
-                                                {plan.price}
+                                                {obs.name}
                                             </p>
 
                                             {/* Selected indicator */}
@@ -268,34 +240,14 @@ function ContactFormInner() {
                                 </div>
                             </div>
 
-                            {/* Email */}
-                            <div className="flex flex-col gap-2 md:col-span-2">
-                                <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 flex items-center gap-2">
-                                    <span className="w-5 h-px bg-white/20" />
-                                    04 · Correo electrónico
-                                    <span className="text-white/20 normal-case tracking-normal font-light">— recibirás confirmación aquí</span>
-                                </label>
-                                <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/25 pointer-events-none" />
-                                    <input
-                                        id="contact-email"
-                                        type="email"
-                                        autoComplete="email"
-                                        placeholder="tu@correo.com"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                        className="w-full glass rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder:text-white/25 border-white/10 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all duration-200 bg-transparent"
-                                    />
-                                </div>
-                            </div>
+
                         </div>
 
                         {/* Industry (optional) */}
                         <div className="flex flex-col gap-2 mb-10">
                             <label htmlFor="contact-industry" className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 flex items-center gap-2">
                                 <span className="w-5 h-px bg-white/20" />
-                                05 · ¿A qué te dedicas? <span className="text-white/20 normal-case tracking-normal font-light">(opcional)</span>
+                                04 · ¿A qué te dedicas? <span className="text-white/20 normal-case tracking-normal font-light">(opcional)</span>
                             </label>
                             <div className="relative">
                                 <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/25 pointer-events-none" />
@@ -333,7 +285,7 @@ function ContactFormInner() {
                                 ) : (
                                     <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
                                 )}
-                                {formState === "submitting" ? "Enviando..." : "Quiero que me contacten"}
+                                {formState === "submitting" ? "Enviando..." : "Solicitar mi diagnóstico"}
                             </button>
 
                             <p className="text-xs text-white/25 leading-relaxed max-w-xs text-center">

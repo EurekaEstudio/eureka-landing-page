@@ -7,8 +7,6 @@ import { trackScrollDepth } from "@/lib/tracking"
 import { PilarInfraestructura } from "@/components/sections/PilarInfraestructura"
 import { PilarInteligencia } from "@/components/sections/PilarInteligencia"
 import { PilarTraccion } from "@/components/sections/PilarTraccion"
-import { PricingSection } from "@/components/sections/PricingSection"
-import { FAQSection } from "@/components/sections/FAQSection"
 import { LogoCloud } from "@/components/sections/LogoCloud"
 import { CaseStudies } from "@/components/sections/CaseStudies"
 import { VisualShowcase } from "@/components/sections/VisualShowcase"
@@ -16,6 +14,7 @@ import { ComparisonTable } from "@/components/sections/ComparisonTable"
 import { FinalCTA } from "@/components/sections/FinalCTA"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { NavBar } from "@/components/shared/NavBar"
+import { FAQSection } from "@/components/sections/FAQSection"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -143,12 +142,11 @@ export default function App() {
           <LogoCloud />
           <PilarInfraestructura />
           <VisualShowcase />
+          <CaseStudies />
           <ContactForm />
           <PilarInteligencia />
           <PilarTraccion />
-          <CaseStudies />
           <ComparisonTable />
-          <PricingSection />
           <FAQSection />
           <FinalCTA />
         </div>
